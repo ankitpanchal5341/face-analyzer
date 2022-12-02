@@ -50,7 +50,7 @@ function App() {
 
   return (
     <div className="App" >
-      <ReactWebcam setResData={setResData} />
+      <ReactWebcam setResData={setResData} setLoading={setLoading}/>
 
 
       <div style={{ marginTop: 20, border: '2px solid red', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>

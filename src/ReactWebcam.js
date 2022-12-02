@@ -12,7 +12,7 @@ export default function ReactWebcam(props){
     const capture = React.useCallback(() => {
       const imageSrc = webcamRef.current.getScreenshot();
       if(imageSrc != null){
-
+        props.setLoading(true)
       
       setImgSrc(imageSrc);
     fetch(imageSrc)
@@ -24,12 +24,16 @@ export default function ReactWebcam(props){
         headers: {
         'Content-Type': 'multipart/form-data'
       }})
-    .then(res=>
-      props.setResData(res)
-      // console.log(res)
+    .then(res=>{
+      
+      props.setResData(res.data)
+      props.setLoading(false)
+      
+    }
       )
     .catch(err=>console.log(err))
     })
+    props.setLoading(false)
 
   }else{
     alert("Please Capture Image")
