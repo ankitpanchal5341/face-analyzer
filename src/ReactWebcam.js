@@ -31,9 +31,13 @@ export default function ReactWebcam(props){
       
     }
       )
-    .catch(err=>console.log(err))
+    .catch(err=>{
+      console.log(err)
+     props.setLoading(false)
+    
     })
-    props.setLoading(false)
+    })
+    // props.setLoading(false)
 
   }else{
     alert("Please Capture Image")
@@ -50,6 +54,7 @@ export default function ReactWebcam(props){
           ref={webcamRef}
           screenshotFormat="image/jpeg"
           screenshotQuality={1080}
+          mirrored={true}
         />
         <button onClick={capture}>Capture photo</button>
         {imgSrc && (
